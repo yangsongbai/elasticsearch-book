@@ -4,11 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>检索文档 · 标题</title>
+        <title>检索文档 · elastscsearch权威指南</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="作者">
+        <meta name="author" content="Shay Banon">
         
         
     
@@ -34,6 +34,26 @@
             
                 
                 <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-copyright/footer.css">
                 
             
                 
@@ -70,7 +90,6 @@
     
     
     
-    
     <meta name="HandheldFriendly" content="true"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -83,11 +102,6 @@
     
     
     <link rel="prev" href="06_indexing_employee_documents.html" />
-    
-
-    
-    
-    
     
 
     <style>
@@ -636,6 +650,9 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
 <div id="book-search-results">
     <div class="search-noresults">
     
@@ -666,13 +683,41 @@
 <p>&#x5EFA;&#x8BAE;</p>
 <blockquote>
 <p>&#x5C06; HTTP &#x547D;&#x4EE4;&#x7531; PUT &#x6539;&#x4E3A; GET &#x53EF;&#x4EE5;&#x7528;&#x6765;&#x68C0;&#x7D22;&#x6587;&#x6863;&#xFF0C;&#x540C;&#x6837;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; DELETE &#x547D;&#x4EE4;&#x6765;&#x5220;&#x9664;&#x6587;&#x6863;&#xFF0C;
-&#x4EE5;&#x53CA;&#x4F7F;&#x7528; HEAD &#x6307;&#x4EE4;&#x6765;&#x68C0;&#x67E5;&#x6587;&#x6863;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;&#x5982;&#x679C;&#x60F3;&#x66F4;&#x65B0;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x6587;&#x6863;&#xFF0C;&#x53EA;&#x9700;&#x518D;&#x6B21; PUT &#x3002;</p>
+&#x4EE5;&#x53CA;&#x4F7F;&#x7528; HEAD &#x6307;&#x4EE4;&#x6765;&#x68C0;&#x67E5;&#x6587;&#x6863;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;&#x5982;&#x679C;&#x60F3;&#x66F4;&#x65B0;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x6587;&#x6863;&#xFF0C;&#x53EA;&#x9700;&#x518D;&#x6B21; PUT &#x3002; </p>
 </blockquote>
 </blockquote>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; Songbai Yang all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2021-03-06
+</span></footer> 
 
+<footer class="footer"><div class="footer__container--normal" alt="
+https://github.com/skyFibasic/knowledge/07_retrieving_a_document.html
+">
+<a href="../../gif;base64,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" data-lightbox="1066b3de-9973-4d1b-8334-b58db3568a22" data-title="undefined"><img src="data:image/gif;base64,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" alt="undefined"></a>
+<div class="footer__description--normal"><p class="paragraph footer__author--normal" style="color: #000 !important;">Songbai Yang<sup class="super">&#xAE;</sup></p><p class="paragraph footer__quote--normal" style="color: #000 !important;">Designer info</p><div class="footer__main--normal"><p class="paragraph footer__main__paragraph--normal copyright" style="color: #666 !important;">Copyright &#xA9; Songbai Yang all right reserved, powered by <a href="https://github.com/skyFi" target="_blank">skyFi</a></p><p class="paragraph footer__main__paragraph--normal footer__modifyTime--normal" style="color: #666 !important;"><span style="color: #666 !important;">modified at</span>
+2021-03-06 16:28:17
+</p></div></div></div><div class="box__issues">
+
+</div></footer>
                                 
                                 </section>
                             
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
     </div>
     <div class="search-results">
         <div class="has-results">
@@ -712,7 +757,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"检索文档","level":"1.4.1.6","depth":3,"next":{"title":"轻量检索","level":"1.4.1.7","depth":3,"path":"basic/knowledge/08_search_lite.md","ref":"basic/knowledge/08_search_lite.md","articles":[]},"previous":{"title":"索引员工文档","level":"1.4.1.5","depth":3,"path":"basic/knowledge/06_indexing_employee_documents.md","ref":"basic/knowledge/06_indexing_employee_documents.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","expandable-chapters","hide-element","github","github-buttons","sharing-plus","anchor-navigation-ex","favicon","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/yangsongbai"},"livereload":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"favicon":{},"github-buttons":{"buttons":[{"user":"yangsongbai","repo":"elasticsearch-book","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","author":"作者","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"标题","language":"zh-hans","links":{"sidebar":{"CSDN博客":"https://blog.csdn.net/yang52017","个人微信公众号":"https://mp.weixin.qq.com/s/6J7d4EVw6uX3Im9sbXW6WQ"}},"gitbook":"3.2.3","sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"description":"简单描素"},"file":{"path":"basic/knowledge/07_retrieving_a_document.md","mtime":"2021-03-06T08:28:17.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-06T15:34:05.837Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"检索文档","level":"1.4.1.6","depth":3,"next":{"title":"轻量检索","level":"1.4.1.7","depth":3,"path":"basic/knowledge/08_search_lite.md","ref":"basic/knowledge/08_search_lite.md","articles":[]},"previous":{"title":"索引员工文档","level":"1.4.1.5","depth":3,"path":"basic/knowledge/06_indexing_employee_documents.md","ref":"basic/knowledge/06_indexing_employee_documents.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","expandable-chapters","hide-element","github","github-buttons","sharing-plus","anchor-navigation-ex","code","lightbox","tbfed-pagefooter","copy-code-button","search-plus","page-copyright","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Songbai Yang","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD"},"github":{"url":"https://github.com/yangsongbai"},"livereload":{},"splitter":{},"search":{},"page-copyright":{"wisdom":"Designer info","noPowered":false,"copyright":"Copyright &#169; Songbai Yang","styles (normal, symmetrical)":"normal","style":"normal","isShowQRCode":true,"timeColor":"#666","utcOffset":"8","format":"YYYY-MM-dd hh:mm:ss","signature":"Songbai Yang","baseUri":"https://github.com/skyFi","copyrightColor":"#666","description":"modified at"},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"lightbox":{"jquery":true,"sameUuid":false},"github-buttons":{"buttons":[{"user":"yangsongbai","repo":"elasticsearch-book","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"Shay Banon","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"elastscsearch权威指南","language":"zh-hans","links":{"sidebar":{"CSDN博客":"https://blog.csdn.net/yang52017","个人微信公众号":"https://mp.weixin.qq.com/s/6J7d4EVw6uX3Im9sbXW6WQ"}},"gitbook":"3.2.3","sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"anchor-navigation-ex":{"showLevel":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"description":"简单描素"},"file":{"path":"basic/knowledge/07_retrieving_a_document.md","mtime":"2021-03-06T08:28:17.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-06T16:38:37.183Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -747,6 +792,26 @@
     
         
         <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
         
     
         

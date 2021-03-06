@@ -1,11 +1,12 @@
 {
-  "title": "标题",
-  "author": "作者",
+  "title": "elastscsearch权威指南",
+  "author": "Shay Banon",
   "description": "简单描素",
   "language": "zh-hans",
   "gitbook": "3.2.3",
   "structure": {
-    "readme": "README.md"
+    "readme": "README.md",
+    "summary": "SUMMARY.md"
   },
   "links": {
     "sidebar": {
@@ -24,10 +25,32 @@
     "github-buttons",
     "sharing-plus",
     "anchor-navigation-ex",
-    "favicon"
+    "code",
+    "lightbox",
+    "tbfed-pagefooter",
+    "copy-code-button",
+    "search-plus",
+    "page-copyright"
   ],
 
   "pluginsConfig":{
+    "tbfed-pagefooter": {
+      "copyright": "Copyright &copy Songbai Yang",
+      "modify_label": "该文件修订时间：",
+      "modify_format": "YYYY-MM-DD"
+    },
+    "page-copyright": {
+      "description": "modified at",
+      "signature": "Songbai Yang",
+      "wisdom": "Designer info",
+      "format": "YYYY-MM-dd hh:mm:ss",
+      "copyright": "Copyright &#169; Songbai Yang",
+      "timeColor": "#666",
+      "copyrightColor": "#666",
+      "utcOffset": "8",
+      "style": "normal",
+      "noPowered": false
+    },
     "github": {
       "url": "https://github.com/yangsongbai"
     },
@@ -65,6 +88,13 @@
     "all": [
       "google", "facebook", "weibo", "twitter",
       "qq", "qzone", "linkedin", "pocket"
-    ]
+    ],
+    "anchor-navigation-ex": {
+      "showLevel": false,
+      "isShowTocTitleIcon": true,
+      "tocLevel1Icon": "fa fa-hand-o-right",
+      "tocLevel2Icon": "fa fa-hand-o-right",
+      "tocLevel3Icon": "fa fa-hand-o-right"
+    }
   }
 }

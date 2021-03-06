@@ -4,11 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>水平扩容 · 标题</title>
+        <title>水平扩容 · elastscsearch权威指南</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="作者">
+        <meta name="author" content="Shay Banon">
         
         
     
@@ -34,6 +34,26 @@
             
                 
                 <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-copyright/footer.css">
                 
             
                 
@@ -70,7 +90,6 @@
     
     
     
-    
     <meta name="HandheldFriendly" content="true"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -83,11 +102,6 @@
     
     
     <link rel="prev" href="04_add_failover.html" />
-    
-
-    
-    
-    
     
 
     <style>
@@ -636,6 +650,9 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
 <div id="book-search-results">
     <div class="search-noresults">
     
@@ -647,7 +664,7 @@
 <blockquote>
 <p>Figure 4. &#x62E5;&#x6709;&#x4E09;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x96C6;&#x7FA4;&#x2014;&#x2014;&#x4E3A;&#x4E86;&#x5206;&#x6563;&#x8D1F;&#x8F7D;&#x800C;&#x5BF9;&#x5206;&#x7247;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x5206;&#x914D;  </p>
 </blockquote>
-<p> <img src="images/04_three_node_cluster.png" width="800" height="200" alt="&#x62E5;&#x6709;&#x4E09;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x96C6;&#x7FA4;&#x2014;&#x2014;&#x4E3A;&#x4E86;&#x5206;&#x6563;&#x8D1F;&#x8F7D;&#x800C;&#x5BF9;&#x5206;&#x7247;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x5206;&#x914D;" align="center"></p>
+<p> <a href="images/04_three_node_cluster.png" data-lightbox="0e4ae691-e330-4283-8931-c25007dee65b" data-title="&#x62E5;&#x6709;&#x4E09;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x96C6;&#x7FA4;&#x2014;&#x2014;&#x4E3A;&#x4E86;&#x5206;&#x6563;&#x8D1F;&#x8F7D;&#x800C;&#x5BF9;&#x5206;&#x7247;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x5206;&#x914D;"><img src="images/04_three_node_cluster.png" alt="&#x62E5;&#x6709;&#x4E09;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x96C6;&#x7FA4;&#x2014;&#x2014;&#x4E3A;&#x4E86;&#x5206;&#x6563;&#x8D1F;&#x8F7D;&#x800C;&#x5BF9;&#x5206;&#x7247;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x5206;&#x914D;"></a></p>
 <p> &#x2003;&#x2003;<em>Node 1</em> &#x548C; <em>Node 2</em> &#x4E0A;&#x5404;&#x6709;&#x4E00;&#x4E2A;&#x5206;&#x7247;&#x88AB;&#x8FC1;&#x79FB;&#x5230;&#x4E86;&#x65B0;&#x7684; Node 3 &#x8282;&#x70B9;&#xFF0C;&#x73B0;&#x5728;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x90FD;&#x62E5;&#x6709;2&#x4E2A;&#x5206;&#x7247;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E4B;&#x524D;&#x7684;3&#x4E2A;&#x3002; 
  &#x8FD9;&#x8868;&#x793A;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x786C;&#x4EF6;&#x8D44;&#x6E90;&#xFF08;CPU, RAM, I/O&#xFF09;&#x5C06;&#x88AB;&#x66F4;&#x5C11;&#x7684;&#x5206;&#x7247;&#x6240;&#x5171;&#x4EAB;&#xFF0C;&#x6BCF;&#x4E2A;&#x5206;&#x7247;&#x7684;&#x6027;&#x80FD;&#x5C06;&#x4F1A;&#x5F97;&#x5230;&#x63D0;&#x5347;&#x3002;</p>
 <p> &#x2003;&#x2003;&#x5206;&#x7247;&#x662F;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5B8C;&#x6574;&#x7684;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#xFF0C;&#x5B83;&#x62E5;&#x6709;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x8D44;&#x6E90;&#x7684;&#x80FD;&#x529B;&#x3002; 
@@ -672,7 +689,7 @@
 <blockquote>
 <p>Figure 5. &#x5C06;&#x53C2;&#x6570; number_of_replicas &#x8C03;&#x5927;&#x5230; 2</p>
 </blockquote>
-<p> <img src="images/05_increasing.png" width="800" height="200" alt="&#x5C06;&#x53C2;&#x6570; number_of_replicas &#x8C03;&#x5927;&#x5230; 2" align="center"></p>
+<p> <a href="images/05_increasing.png" data-lightbox="7090f809-6d2a-480b-9af2-01d6ed1d3911" data-title="&#x5C06;&#x53C2;&#x6570; number_of_replicas &#x8C03;&#x5927;&#x5230; 2"><img src="images/05_increasing.png" alt="&#x5C06;&#x53C2;&#x6570; number_of_replicas &#x8C03;&#x5927;&#x5230; 2"></a></p>
 <blockquote>
 <p>&#x6CE8;&#x610F;  </p>
 <blockquote>
@@ -681,10 +698,38 @@
 &#x2003;&#x2003;&#x4F46;&#x662F;&#x66F4;&#x591A;&#x7684;&#x526F;&#x672C;&#x5206;&#x7247;&#x6570;&#x63D0;&#x9AD8;&#x4E86;&#x6570;&#x636E;&#x5197;&#x4F59;&#x91CF;&#xFF1A;&#x6309;&#x7167;&#x4E0A;&#x9762;&#x7684;&#x8282;&#x70B9;&#x914D;&#x7F6E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x5931;&#x53BB;2&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4E0D;&#x4E22;&#x5931;&#x4EFB;&#x4F55;&#x6570;&#x636E;&#x3002;</p>
 </blockquote>
 </blockquote>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; Songbai Yang all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2021-03-06
+</span></footer> 
 
+<footer class="footer"><div class="footer__container--normal" alt="
+https://github.com/skyFibasic/life_inside_cluster/05_scale_horizontally.html
+">
+<a href="../../gif;base64,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" data-lightbox="83631ece-126e-4b8c-87ca-58ba8e9960fc" data-title="undefined"><img src="data:image/gif;base64,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" alt="undefined"></a>
+<div class="footer__description--normal"><p class="paragraph footer__author--normal" style="color: #000 !important;">Songbai Yang<sup class="super">&#xAE;</sup></p><p class="paragraph footer__quote--normal" style="color: #000 !important;">Designer info</p><div class="footer__main--normal"><p class="paragraph footer__main__paragraph--normal copyright" style="color: #666 !important;">Copyright &#xA9; Songbai Yang all right reserved, powered by <a href="https://github.com/skyFi" target="_blank">skyFi</a></p><p class="paragraph footer__main__paragraph--normal footer__modifyTime--normal" style="color: #666 !important;"><span style="color: #666 !important;">modified at</span>
+2021-03-06 21:57:28
+</p></div></div></div><div class="box__issues">
+
+</div></footer>
                                 
                                 </section>
                             
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
     </div>
     <div class="search-results">
         <div class="has-results">
@@ -724,7 +769,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"水平扩容","level":"1.4.2.5","depth":3,"next":{"title":"应对故障","level":"1.4.2.6","depth":3,"path":"basic/life_inside_cluster/06_coping_with_failure.md","ref":"basic/life_inside_cluster/06_coping_with_failure.md","articles":[]},"previous":{"title":"添加故障转移","level":"1.4.2.4","depth":3,"path":"basic/life_inside_cluster/04_add_failover.md","ref":"basic/life_inside_cluster/04_add_failover.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","expandable-chapters","hide-element","github","github-buttons","sharing-plus","anchor-navigation-ex","favicon","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/yangsongbai"},"livereload":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"favicon":{},"github-buttons":{"buttons":[{"user":"yangsongbai","repo":"elasticsearch-book","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","author":"作者","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"标题","language":"zh-hans","links":{"sidebar":{"CSDN博客":"https://blog.csdn.net/yang52017","个人微信公众号":"https://mp.weixin.qq.com/s/6J7d4EVw6uX3Im9sbXW6WQ"}},"gitbook":"3.2.3","sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"description":"简单描素"},"file":{"path":"basic/life_inside_cluster/05_scale_horizontally.md","mtime":"2021-03-06T13:57:28.547Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-06T15:34:05.837Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"水平扩容","level":"1.4.2.5","depth":3,"next":{"title":"应对故障","level":"1.4.2.6","depth":3,"path":"basic/life_inside_cluster/06_coping_with_failure.md","ref":"basic/life_inside_cluster/06_coping_with_failure.md","articles":[]},"previous":{"title":"添加故障转移","level":"1.4.2.4","depth":3,"path":"basic/life_inside_cluster/04_add_failover.md","ref":"basic/life_inside_cluster/04_add_failover.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","expandable-chapters","hide-element","github","github-buttons","sharing-plus","anchor-navigation-ex","code","lightbox","tbfed-pagefooter","copy-code-button","search-plus","page-copyright","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Songbai Yang","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD"},"github":{"url":"https://github.com/yangsongbai"},"livereload":{},"splitter":{},"search":{},"page-copyright":{"wisdom":"Designer info","noPowered":false,"copyright":"Copyright &#169; Songbai Yang","styles (normal, symmetrical)":"normal","style":"normal","isShowQRCode":true,"timeColor":"#666","utcOffset":"8","format":"YYYY-MM-dd hh:mm:ss","signature":"Songbai Yang","baseUri":"https://github.com/skyFi","copyrightColor":"#666","description":"modified at"},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"lightbox":{"jquery":true,"sameUuid":false},"github-buttons":{"buttons":[{"user":"yangsongbai","repo":"elasticsearch-book","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"Shay Banon","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"elastscsearch权威指南","language":"zh-hans","links":{"sidebar":{"CSDN博客":"https://blog.csdn.net/yang52017","个人微信公众号":"https://mp.weixin.qq.com/s/6J7d4EVw6uX3Im9sbXW6WQ"}},"gitbook":"3.2.3","sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"anchor-navigation-ex":{"showLevel":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"description":"简单描素"},"file":{"path":"basic/life_inside_cluster/05_scale_horizontally.md","mtime":"2021-03-06T13:57:28.547Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-06T16:38:37.183Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -759,6 +804,26 @@
     
         
         <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
         
     
         
