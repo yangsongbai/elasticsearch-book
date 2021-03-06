@@ -40,11 +40,12 @@ PUT /megacorp/employee/1
 &emsp;&emsp;注意，路径 /megacorp/employee/1 包含了三部分的信息：   
 
 **megacorp**  
-索引名称   
+&emsp;&emsp;索引名称   
 **employee**   
-类型名称    
+&emsp;&emsp;类型名称    
 **1**   
-特定雇员的ID       
+&emsp;&emsp;特定雇员的ID       
+
 &emsp;&emsp;请求体 —— JSON 文档 —— 包含了这位员工的所有详细信息，他的名字叫 John Smith ，今年 25 岁，喜欢攀岩。
 
 &emsp;&emsp;很简单！无需进行执行管理任务，如创建一个索引或指定每个属性的数据类型之类的，可以直接只索引一个文档。Elasticsearch 默认地完成其他一切，因此所有必需的管理任务都在后台使用默认设置完成。
