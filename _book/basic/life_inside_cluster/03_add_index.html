@@ -1,0 +1,735 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>添加索引 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="04_add_failover.html" />
+    
+    
+    <link rel="prev" href="02_cluster_health.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Elasticsearch 权威指南</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../introduction/introduction.html">
+            
+                <a href="../../introduction/introduction.html">
+            
+                    
+                    引言
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../introduction/audience.html">
+            
+                <a href="../../introduction/audience.html">
+            
+                    
+                    谁应该读这这本书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../introduction/why_write.html">
+            
+                <a href="../../introduction/why_write.html">
+            
+                    
+                    为什么我们要写这本书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../introduction/read.html">
+            
+                <a href="../../introduction/read.html">
+            
+                    
+                    如何读这本书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../introduction/navigation.html">
+            
+                <a href="../../introduction/navigation.html">
+            
+                    
+                    本书导航
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../introduction/convention.html">
+            
+                <a href="../../introduction/convention.html">
+            
+                    
+                    本书协议约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../introduction.html">
+            
+                <a href="../introduction.html">
+            
+                    
+                    基础入门
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../knowledge/basic_knowledge.html">
+            
+                <a href="../knowledge/basic_knowledge.html">
+            
+                    
+                    基础知识
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../knowledge/install.html">
+            
+                <a href="../knowledge/install.html">
+            
+                    
+                    安装运行elasticsearch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../knowledge/interactive_with_es.html">
+            
+                <a href="../knowledge/interactive_with_es.html">
+            
+                    
+                    和Elasticsearch交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../knowledge/document_oriented.html">
+            
+                <a href="../knowledge/document_oriented.html">
+            
+                    
+                    面向文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../knowledge/05_finding_your_feet.html">
+            
+                <a href="../knowledge/05_finding_your_feet.html">
+            
+                    
+                    适应新环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5" data-path="../knowledge/06_indexing_employee_documents.html">
+            
+                <a href="../knowledge/06_indexing_employee_documents.html">
+            
+                    
+                    索引员工文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.6" data-path="../knowledge/07_retrieving_a_document.html">
+            
+                <a href="../knowledge/07_retrieving_a_document.html">
+            
+                    
+                    检索文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.7" data-path="../knowledge/08_search_lite.html">
+            
+                <a href="../knowledge/08_search_lite.html">
+            
+                    
+                    轻量检索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.8" data-path="../knowledge/09_search_with_query_dsl.html">
+            
+                <a href="../knowledge/09_search_with_query_dsl.html">
+            
+                    
+                    使用查询表达式搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.9" data-path="../knowledge/10_more_complicated_searches.html">
+            
+                <a href="../knowledge/10_more_complicated_searches.html">
+            
+                    
+                    更复杂的搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.10" data-path="../knowledge/11_full_text_search.html">
+            
+                <a href="../knowledge/11_full_text_search.html">
+            
+                    
+                    全文搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.11" data-path="../knowledge/12_phrase_search.html">
+            
+                <a href="../knowledge/12_phrase_search.html">
+            
+                    
+                    短语搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.12" data-path="../knowledge/13_highlighting_our_searches.html">
+            
+                <a href="../knowledge/13_highlighting_our_searches.html">
+            
+                    
+                    高亮搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.13" data-path="../knowledge/14_analytics.html">
+            
+                <a href="../knowledge/14_analytics.html">
+            
+                    
+                    分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.14" data-path="../knowledge/15_tutorial_conclusion.html">
+            
+                <a href="../knowledge/15_tutorial_conclusion.html">
+            
+                    
+                    教程结语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.15" data-path="../knowledge/16_distributed_nature.html">
+            
+                <a href="../knowledge/16_distributed_nature.html">
+            
+                    
+                    分布式特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="introduction.html">
+            
+                <a href="introduction.html">
+            
+                    
+                    集群内的原理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="01_empty_cluster.html">
+            
+                <a href="01_empty_cluster.html">
+            
+                    
+                    空集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="02_cluster_health.html">
+            
+                <a href="02_cluster_health.html">
+            
+                    
+                    集群健康
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2.3" data-path="03_add_index.html">
+            
+                <a href="03_add_index.html">
+            
+                    
+                    添加索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" data-path="04_add_failover.html">
+            
+                <a href="04_add_failover.html">
+            
+                    
+                    添加故障转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5" data-path="05_scale_horizontally.html">
+            
+                <a href="05_scale_horizontally.html">
+            
+                    
+                    水平扩容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.6" data-path="06_coping_with_failure.html">
+            
+                <a href="06_coping_with_failure.html">
+            
+                    
+                    应对故障
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../data_in_data_out/introduction.html">
+            
+                <a href="../data_in_data_out/introduction.html">
+            
+                    
+                    数据输入和输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >添加索引</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6DFB;&#x52A0;&#x7D22;&#x5F15;"><a href="03_add_index.html">&#x6DFB;&#x52A0;&#x7D22;&#x5F15;</a></h1>
+<p>&#x2003;&#x2003;&#x6211;&#x4EEC;&#x5F80; Elasticsearch &#x6DFB;&#x52A0;&#x6570;&#x636E;&#x65F6;&#x9700;&#x8981;&#x7528;&#x5230; &#x7D22;&#x5F15; &#x2014;&#x2014; &#x4FDD;&#x5B58;&#x76F8;&#x5173;&#x6570;&#x636E;&#x7684;&#x5730;&#x65B9;&#x3002;
+ &#x7D22;&#x5F15;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;&#x7269;&#x7406; &#x5206;&#x7247; &#x7684; &#x903B;&#x8F91;&#x547D;&#x540D;&#x7A7A;&#x95F4; &#x3002;</p>
+<p>&#x2003;&#x2003;&#x4E00;&#x4E2A; &#x5206;&#x7247; &#x662F;&#x4E00;&#x4E2A;&#x5E95;&#x5C42;&#x7684; &#x5DE5;&#x4F5C;&#x5355;&#x5143; &#xFF0C;&#x5B83;&#x4EC5;&#x4FDD;&#x5B58;&#x4E86;&#x5168;&#x90E8;&#x6570;&#x636E;&#x4E2D;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002; &#x5728;&#x5206;&#x7247;&#x5185;&#x90E8;&#x673A;&#x5236;&#x4E2D;&#xFF0C;
+&#x6211;&#x4EEC;&#x5C06;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x5206;&#x7247;&#x662F;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x7684;&#xFF0C;&#x800C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x5206;&#x7247;&#x662F;&#x4E00;&#x4E2A; Lucene &#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x4EE5;&#x53CA;&#x5B83;&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x3002; 
+&#x6211;&#x4EEC;&#x7684;&#x6587;&#x6863;&#x88AB;&#x5B58;&#x50A8;&#x548C;&#x7D22;&#x5F15;&#x5230;&#x5206;&#x7247;&#x5185;&#xFF0C;&#x4F46;&#x662F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x662F;&#x76F4;&#x63A5;&#x4E0E;&#x7D22;&#x5F15;&#x800C;&#x4E0D;&#x662F;&#x4E0E;&#x5206;&#x7247;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#x3002;</p>
+<p>&#x2003;&#x2003;Elasticsearch &#x662F;&#x5229;&#x7528;&#x5206;&#x7247;&#x5C06;&#x6570;&#x636E;&#x5206;&#x53D1;&#x5230;&#x96C6;&#x7FA4;&#x5185;&#x5404;&#x5904;&#x7684;&#x3002;&#x5206;&#x7247;&#x662F;&#x6570;&#x636E;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x6587;&#x6863;&#x4FDD;&#x5B58;&#x5728;&#x5206;&#x7247;&#x5185;&#xFF0C;
+&#x5206;&#x7247;&#x53C8;&#x88AB;&#x5206;&#x914D;&#x5230;&#x96C6;&#x7FA4;&#x5185;&#x7684;&#x5404;&#x4E2A;&#x8282;&#x70B9;&#x91CC;&#x3002; &#x5F53;&#x4F60;&#x7684;&#x96C6;&#x7FA4;&#x89C4;&#x6A21;&#x6269;&#x5927;&#x6216;&#x8005;&#x7F29;&#x5C0F;&#x65F6;&#xFF0C; Elasticsearch &#x4F1A;&#x81EA;&#x52A8;&#x7684;&#x5728;&#x5404;&#x8282;&#x70B9;&#x4E2D;&#x8FC1;&#x79FB;&#x5206;&#x7247;&#xFF0C;
+&#x4F7F;&#x5F97;&#x6570;&#x636E;&#x4ECD;&#x7136;&#x5747;&#x5300;&#x5206;&#x5E03;&#x5728;&#x96C6;&#x7FA4;&#x91CC;&#x3002;</p>
+<p>&#x2003;&#x2003;&#x4E00;&#x4E2A;&#x5206;&#x7247;&#x53EF;&#x4EE5;&#x662F; &#x4E3B; &#x5206;&#x7247;&#x6216;&#x8005; &#x526F;&#x672C; &#x5206;&#x7247;&#x3002; &#x7D22;&#x5F15;&#x5185;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x6587;&#x6863;&#x90FD;&#x5F52;&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#xFF0C;
+&#x6240;&#x4EE5;&#x4E3B;&#x5206;&#x7247;&#x7684;&#x6570;&#x76EE;&#x51B3;&#x5B9A;&#x7740;&#x7D22;&#x5F15;&#x80FD;&#x591F;&#x4FDD;&#x5B58;&#x7684;&#x6700;&#x5927;&#x6570;&#x636E;&#x91CF;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;</p>
+<blockquote>
+<p>&#x2003;&#x2003;&#x6280;&#x672F;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#x6700;&#x5927;&#x80FD;&#x591F;&#x5B58;&#x50A8; Integer.MAX_VALUE - 128 &#x4E2A;&#x6587;&#x6863;&#xFF0C;
+&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x6700;&#x5927;&#x503C;&#x8FD8;&#x9700;&#x8981;&#x53C2;&#x8003;&#x4F60;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x5305;&#x62EC;&#x4F60;&#x4F7F;&#x7528;&#x7684;&#x786C;&#x4EF6;&#xFF0C; &#x6587;&#x6863;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x590D;&#x6742;&#x7A0B;&#x5EA6;&#xFF0C;
+&#x7D22;&#x5F15;&#x548C;&#x67E5;&#x8BE2;&#x6587;&#x6863;&#x7684;&#x65B9;&#x5F0F;&#x4EE5;&#x53CA;&#x4F60;&#x671F;&#x671B;&#x7684;&#x54CD;&#x5E94;&#x65F6;&#x957F;&#x3002;</p>
+</blockquote>
+</blockquote>
+<p>&#x2003;&#x2003;&#x4E00;&#x4E2A;&#x526F;&#x672C;&#x5206;&#x7247;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#x7684;&#x62F7;&#x8D1D;&#x3002;&#x526F;&#x672C;&#x5206;&#x7247;&#x4F5C;&#x4E3A;&#x786C;&#x4EF6;&#x6545;&#x969C;&#x65F6;&#x4FDD;&#x62A4;&#x6570;&#x636E;&#x4E0D;&#x4E22;&#x5931;&#x7684;&#x5197;&#x4F59;&#x5907;&#x4EFD;&#xFF0C;
+&#x5E76;&#x4E3A;&#x641C;&#x7D22;&#x548C;&#x8FD4;&#x56DE;&#x6587;&#x6863;&#x7B49;&#x8BFB;&#x64CD;&#x4F5C;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x3002;</p>
+<p>&#x2003;&#x2003;&#x5728;&#x7D22;&#x5F15;&#x5EFA;&#x7ACB;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x5DF2;&#x7ECF;&#x786E;&#x5B9A;&#x4E86;&#x4E3B;&#x5206;&#x7247;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x526F;&#x672C;&#x5206;&#x7247;&#x6570;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x4FEE;&#x6539;&#x3002;</p>
+<p>&#x2003;&#x2003;&#x8BA9;&#x6211;&#x4EEC;&#x5728;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x7A7A;&#x8282;&#x70B9;&#x7684;&#x96C6;&#x7FA4;&#x5185;&#x521B;&#x5EFA;&#x540D;&#x4E3A; blogs &#x7684;&#x7D22;&#x5F15;&#x3002; &#x7D22;&#x5F15;&#x5728;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x4F1A;&#x88AB;&#x5206;&#x914D;5&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#xFF0C; 
+&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x6F14;&#x793A;&#x76EE;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5206;&#x914D;3&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#x548C;&#x4E00;&#x4EFD;&#x526F;&#x672C;&#xFF08;&#x6BCF;&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x526F;&#x672C;&#x5206;&#x7247;&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-$xslt">PUT /blogs
+{
+   &quot;settings&quot; : {
+      &quot;number_of_shards&quot; : 3,
+      &quot;number_of_replicas&quot; : 1
+   }
+}
+</code></pre>
+<p>&#x2003;&#x2003;&#x6211;&#x4EEC;&#x7684;&#x96C6;&#x7FA4;&#x73B0;&#x5728;&#x662F;Figure 2, &#x201C;&#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x7684;&#x5355;&#x8282;&#x70B9;&#x96C6;&#x7FA4;&#x201D;&#x3002;&#x6240;&#x6709;3&#x4E2A;&#x4E3B;&#x5206;&#x7247;&#x90FD;&#x88AB;&#x5206;&#x914D;&#x5728; Node 1 &#x3002;</p>
+<blockquote>
+<p>Figure 2. &#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x7684;&#x5355;&#x8282;&#x70B9;&#x96C6;&#x7FA4;</p>
+</blockquote>
+<p><img src="images/02_cluster_with_an_index.png" width="800" height="200" alt="&#x5305;&#x542B;&#x7A7A;&#x5185;&#x5BB9;&#x8282;&#x70B9;&#x7684;&#x96C6;&#x7FA4;" align="center">
+&#x5982;&#x679C;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x67E5;&#x770B;<a href="02_cluster_health.html">&#x96C6;&#x7FA4;&#x5065;&#x5EB7;</a>&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code class="lang-$xslt">{
+  &quot;cluster_name&quot;: &quot;elasticsearch&quot;,
+  &quot;status&quot;: &quot;yellow&quot;,  (a)
+  &quot;timed_out&quot;: false,
+  &quot;number_of_nodes&quot;: 1,
+  &quot;number_of_data_nodes&quot;: 1,
+  &quot;active_primary_shards&quot;: 3,
+  &quot;active_shards&quot;: 3,
+  &quot;relocating_shards&quot;: 0,
+  &quot;initializing_shards&quot;: 0,
+  &quot;unassigned_shards&quot;: 3,   (b)
+  &quot;delayed_unassigned_shards&quot;: 0,
+  &quot;number_of_pending_tasks&quot;: 0,
+  &quot;number_of_in_flight_fetch&quot;: 0,
+  &quot;task_max_waiting_in_queue_millis&quot;: 0,
+  &quot;active_shards_percent_as_number&quot;: 50
+}
+</code></pre>
+<p><em>(a)&#x96C6;&#x7FA4; status &#x503C;&#x4E3A; yellow &#x3002;</em><br><em>(b)&#x6CA1;&#x6709;&#x88AB;&#x5206;&#x914D;&#x5230;&#x4EFB;&#x4F55;&#x8282;&#x70B9;&#x7684;&#x526F;&#x672C;&#x6570;&#x3002;</em>    </p>
+<p>&#x2003;&#x2003;&#x96C6;&#x7FA4;&#x7684;&#x5065;&#x5EB7;&#x72B6;&#x51B5;&#x4E3A; yellow &#x5219;&#x8868;&#x793A;&#x5168;&#x90E8; &#x4E3B; &#x5206;&#x7247;&#x90FD;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF08;&#x96C6;&#x7FA4;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x670D;&#x52A1;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#xFF09;&#xFF0C;
+&#x4F46;&#x662F; &#x526F;&#x672C; &#x5206;&#x7247;&#x6CA1;&#x6709;&#x5168;&#x90E8;&#x5904;&#x5728;&#x6B63;&#x5E38;&#x72B6;&#x6001;&#x3002; &#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x6240;&#x6709;3&#x4E2A;&#x526F;&#x672C;&#x5206;&#x7247;&#x90FD;&#x662F; unassigned &#x2014;&#x2014; &#x5B83;&#x4EEC;&#x90FD;&#x6CA1;&#x6709;&#x88AB;&#x5206;&#x914D;&#x5230;&#x4EFB;&#x4F55;&#x8282;&#x70B9;&#x3002;
+ &#x5728;&#x540C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x65E2;&#x4FDD;&#x5B58;&#x539F;&#x59CB;&#x6570;&#x636E;&#x53C8;&#x4FDD;&#x5B58;&#x526F;&#x672C;&#x662F;&#x6CA1;&#x6709;&#x610F;&#x4E49;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x65E6;&#x5931;&#x53BB;&#x4E86;&#x90A3;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x5C06;&#x4E22;&#x5931;&#x8BE5;&#x8282;&#x70B9;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x526F;&#x672C;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x2003;&#x2003;&#x5F53;&#x524D;&#x6211;&#x4EEC;&#x7684;&#x96C6;&#x7FA4;&#x662F;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x786C;&#x4EF6;&#x6545;&#x969C;&#x65F6;&#x6709;&#x4E22;&#x5931;&#x6570;&#x636E;&#x7684;&#x98CE;&#x9669;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="02_cluster_health.html" class="navigation navigation-prev " aria-label="Previous page: 集群健康">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="04_add_failover.html" class="navigation navigation-next " aria-label="Next page: 添加故障转移">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"添加索引","level":"1.3.2.3","depth":3,"next":{"title":"添加故障转移","level":"1.3.2.4","depth":3,"path":"basic/life_inside_cluster/04_add_failover.md","ref":"basic/life_inside_cluster/04_add_failover.md","articles":[]},"previous":{"title":"集群健康","level":"1.3.2.2","depth":3,"path":"basic/life_inside_cluster/02_cluster_health.md","ref":"basic/life_inside_cluster/02_cluster_health.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","hide-element","livereload"],"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"basic/life_inside_cluster/03_add_index.md","mtime":"2021-03-06T13:30:07.912Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-06T08:28:48.727Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
