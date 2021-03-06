@@ -21,3 +21,7 @@
        * [全文搜索](basic/knowledge/11_full_text_search.md)
        * [短语搜索](basic/knowledge/12_phrase_search.md)
        * [高亮搜索](basic/knowledge/13_highlighting_our_searches.md)
+       * [分析](basic/knowledge/14_analytics.md)
+       * [教程结语](basic/knowledge/15_tutorial_conclusion.md)
+       * [分布式特性](basic/knowledge/16_distributed_nature.md)
+       
