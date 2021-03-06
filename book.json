@@ -1,12 +1,70 @@
 {
+  "title": "标题",
+  "author": "作者",
+  "description": "简单描素",
+  "language": "zh-hans",
+  "gitbook": "3.2.3",
+  "structure": {
+    "readme": "README.md"
+  },
+  "links": {
+    "sidebar": {
+      "CSDN博客": "https://blog.csdn.net/yang52017",
+      "个人微信公众号": "https://mp.weixin.qq.com/s/6J7d4EVw6uX3Im9sbXW6WQ"
+    }
+  },
   "plugins": [
+    "-sharing",
+    "splitter",
+    "expandable-chapters-small",
+    "anchors",
     "expandable-chapters",
-    "hide-element"
+    "hide-element",
+    "github",
+    "github-buttons",
+    "sharing-plus",
+    "anchor-navigation-ex",
+    "favicon"
   ],
 
   "pluginsConfig":{
+    "github": {
+      "url": "https://github.com/yangsongbai"
+    },
+    "github-buttons": {
+      "buttons": [{
+        "user": "yangsongbai",
+        "repo": "elasticsearch-book",
+        "type": "star",
+        "size": "small",
+        "count": true
+      }]
+    },
   "hide-element": {
     "elements": [".gitbook-link"]
   }
-}
+  },
+  "sharing": {
+    "douban": false,
+    "facebook": false,
+    "google": false,
+    "hatenaBookmark": false,
+    "instapaper": false,
+    "line": false,
+    "linkedin": false,
+    "messenger": false,
+    "pocket": false,
+    "qq": false,
+    "qzone": false,
+    "stumbleupon": false,
+    "twitter": false,
+    "viber": false,
+    "vk": false,
+    "weibo": false,
+    "whatsapp": false,
+    "all": [
+      "google", "facebook", "weibo", "twitter",
+      "qq", "qzone", "linkedin", "pocket"
+    ]
+  }
 }

@@ -1,6 +1,6 @@
 # Summary
 ##   Elasticsearch 权威指南 
-* [序言](README.md)
+* [序言](introduction.md)
 * [引言](introduction/introduction.md)
     * [谁应该读这这本书](introduction/audience.md)
     * [为什么我们要写这本书](introduction/why_write.md)
