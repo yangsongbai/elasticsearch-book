@@ -1,5 +1,14 @@
 {
   "plugins":[
     "expandable-chapters"
-  ]
+  ],
+  "plugins": [
+    "hide-element"
+  ],
+
+  "pluginsConfig":{
+  "hide-element": {
+    "elements": [".gitbook-link"]
+  }
+}
 }
