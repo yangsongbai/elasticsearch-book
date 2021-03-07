@@ -36,3 +36,6 @@
        * [文档元数据](basic/data_in_data_out/02_document_metadata.md)
        * [索引文档](basic/data_in_data_out/03_indexing_document.md)
        * [取回一个文档](basic/data_in_data_out/04_retrieving_document.md)
+       * [检查文档是否存在](basic/data_in_data_out/05_document_exists.md)
+       * [更新整个文档](basic/data_in_data_out/06_updating_whole_document.md)
+       * [创建新文档](basic/data_in_data_out/07_creating_new_document.md)
