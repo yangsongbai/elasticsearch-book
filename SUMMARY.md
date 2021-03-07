@@ -32,3 +32,7 @@
        * [水平扩容](basic/life_inside_cluster/05_scale_horizontally.md)
        * [应对故障](basic/life_inside_cluster/06_coping_with_failure.md)
     * [数据输入和输出](basic/data_in_data_out/introduction.md)    
+       * [什么是文档](basic/data_in_data_out/01_document_definition.md)
+       * [文档元数据](basic/data_in_data_out/02_document_metadata.md)
+       * [索引文档](basic/data_in_data_out/03_indexing_document.md)
+       * [取回一个文档](basic/data_in_data_out/04_retrieving_document.md)
