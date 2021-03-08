@@ -42,3 +42,4 @@
        * [删除文档](basic/data_in_data_out/08_deleting_document.md)
        * [处理冲突](basic/data_in_data_out/09_dealing_with_conflicts.md)
        * [乐观并发控制](basic/data_in_data_out/10_optimistic_concurrency_control.md)
+       * [文档的部分更新](basic/data_in_data_out/11_partial_updates_documents.md)
