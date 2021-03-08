@@ -20,7 +20,8 @@ PUT /website/blog/123
   "created":   false (a)
 }
 ```
-`(a) created 标志设置成 false ，是因为相同的索引、类型和 ID 的文档已经存在。`
+`(a) created 标志设置成 false ，是因为相同的索引、类型和 ID 的文档已经存在。`     
+ 
 &emsp;&emsp;在内部，Elasticsearch 已将旧文档标记为已删除，并增加一个全新的文档。
  尽管你不能再对旧版本的文档进行访问，但它并不会立即消失。
  当继续索引更多的数据，Elasticsearch 会在后台清理这些已删除文档。

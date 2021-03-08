@@ -39,3 +39,6 @@
        * [检查文档是否存在](basic/data_in_data_out/05_document_exists.md)
        * [更新整个文档](basic/data_in_data_out/06_updating_whole_document.md)
        * [创建新文档](basic/data_in_data_out/07_creating_new_document.md)
+       * [删除文档](basic/data_in_data_out/08_deleting_document.md)
+       * [处理冲突](basic/data_in_data_out/09_dealing_with_conflicts.md)
+       * [乐观并发控制](basic/data_in_data_out/10_optimistic_concurrency_control.md)
