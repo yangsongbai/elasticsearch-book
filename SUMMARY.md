@@ -43,3 +43,6 @@
        * [处理冲突](basic/data_in_data_out/09_dealing_with_conflicts.md)
        * [乐观并发控制](basic/data_in_data_out/10_optimistic_concurrency_control.md)
        * [文档的部分更新](basic/data_in_data_out/11_partial_updates_documents.md)
+       * [取回多个文档](basic/data_in_data_out/12_retrieving_multiple_documents.md)
+       * [代价较小的批量操作](basic/data_in_data_out/13_cheaper_in_bulk.md)
+    * [分布式文档存储](basic/distributed_document_store/README.md)    
