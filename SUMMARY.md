@@ -54,3 +54,7 @@
        * [多文档模式](basic/distributed_document_store/06_multidocument_patterns.md)  
     * [搜索——最基本的工具](basic/searching_the_basic_tools/README.md) 
        * [空搜索](basic/searching_the_basic_tools/01_the_empty_search.md)     
+       * [多索引](basic/searching_the_basic_tools/02_multi_index.md)    
+       * [分页](basic/searching_the_basic_tools/03_pagination.md)   
+       * [轻量 搜索](basic/searching_the_basic_tools/04_search_lite.md) 
+    * [映射和分析](basic/mapping_analysis/README.md)   
