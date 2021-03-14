@@ -66,3 +66,6 @@
     * [请求体查询](basic/full_body_search/README.md)     
        * [空查询](basic/full_body_search/01_empty_search.md)  
        * [查询表达式](basic/full_body_search/02_query_dsl.md) 
+       * [查询与过滤](basic/full_body_search/03_queries_and_flters.md) 
+       * [最重要的查询](basic/full_body_search/04_most_important_queries.md)  
+       * [组合多查询](basic/full_body_search/05_combining_queries_together.md)  
