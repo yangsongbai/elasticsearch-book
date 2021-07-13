@@ -1,0 +1,101 @@
+# 尝试聚合      
+ &emsp;&emsp; [尝试聚合](https://www.elastic.co/guide/cn/elasticsearch/guide/current/aggregations.html)
+
+我们可以用以下几页定义不同的聚合和它们的语法， 但学习聚合的最佳途径就是用实例来说明。 
+一旦我们获得了聚合的思想，以及如何合理地嵌套使用它们，那么语法就变得不那么重要了。
+
+聚合的桶操作和度量的完整用法可以在 Elasticsearch 参考 中找到。本章中会涵盖其中很多内容，但在阅读完本章后查看它会有助于我们对它的整体能力有所了解。
+
+所以让我们先看一个例子。我们将会创建一些对汽车经销商有用的聚合，数据是关于汽车交易的信息：车型、制造商、售价、何时被出售等。
+
+首先我们批量索引一些数据：  
+```
+POST /cars/transactions/_bulk
+{ "index": {}}
+{ "price" : 10000, "color" : "red", "make" : "honda", "sold" : "2014-10-28" }
+{ "index": {}}
+{ "price" : 20000, "color" : "red", "make" : "honda", "sold" : "2014-11-05" }
+{ "index": {}}
+{ "price" : 30000, "color" : "green", "make" : "ford", "sold" : "2014-05-18" }
+{ "index": {}}
+{ "price" : 15000, "color" : "blue", "make" : "toyota", "sold" : "2014-07-02" }
+{ "index": {}}
+{ "price" : 12000, "color" : "green", "make" : "toyota", "sold" : "2014-08-19" }
+{ "index": {}}
+{ "price" : 20000, "color" : "red", "make" : "honda", "sold" : "2014-11-05" }
+{ "index": {}}
+{ "price" : 80000, "color" : "red", "make" : "bmw", "sold" : "2014-01-01" }
+{ "index": {}}
+{ "price" : 25000, "color" : "blue", "make" : "ford", "sold" : "2014-02-12" }
+```   
+有了数据，开始构建我们的第一个聚合。汽车经销商可能会想知道哪个颜色的汽车销量最好，用聚合可以轻易得到结果，用 terms 桶操作：   
+```
+GET /cars/transactions/_search
+{
+    "size" : 0,
+    "aggs" : { 
+        "popular_colors" : { 
+            "terms" : { 
+              "field" : "color"
+            }
+        }
+    }
+}
+```
+聚合操作被置于顶层参数 aggs 之下（如果你愿意，完整形式 aggregations 同样有效）。
+然后，可以为聚合指定一个我们想要名称，本例中是： popular_colors 。
+最后，定义单个桶的类型 terms 。   
+
+聚合是在特定搜索结果背景下执行的， 这也就是说它只是查询请求的另外一个顶层参数（例如，使用 /_search 端点）。 
+]聚合可以与查询结对，但我们会晚些在 [限定聚合的范围（Scoping Aggregations）](https://www.elastic.co/guide/cn/elasticsearch/guide/current/_scoping_aggregations.html)
+ 中来解决这个问题。  
+ 
+ > 
+>> 可能会注意到我们将 size 设置成 0 。我们并不关心搜索结果的具体内容，所以将返回记录数设置为 0 来提高查询速度。 
+设置 size: 0 与 Elasticsearch 1.x 中使用 count 搜索类型等价。    
+
+
+然后我们为聚合定义一个名字，名字的选择取决于使用者，响应的结果会以我们定义的名字为标签，这样应用就可以解析得到的结果。
+
+随后我们定义聚合本身，在本例中，我们定义了一个单 terms 桶。 这个 terms 桶会为每个碰到的唯一词项动态创建新的桶。 
+因为我们告诉它使用 color 字段，所以 terms 桶会为每个颜色动态创建新桶。
+
+让我们运行聚合并查看结果：     
+```
+{
+...
+   "hits": {
+      "hits": [] 
+   },
+   "aggregations": {
+      "popular_colors": { 
+         "buckets": [
+            {
+               "key": "red", 
+               "doc_count": 4 
+            },
+            {
+               "key": "blue",
+               "doc_count": 2
+            },
+            {
+               "key": "green",
+               "doc_count": 2
+            }
+         ]
+      }
+   }
+}
+```    
+	
+因为我们设置了 size 参数，所以不会有 hits 搜索结果返回。   
+popular_colors 聚合是作为 aggregations 字段的一部分被返回的。   
+每个桶的 key 都与 color 字段里找到的唯一词对应。它总会包含 doc_count 字段，告诉我们包含该词项的文档数量。  
+每个桶的数量代表该颜色的文档数量。   
+ 
+ 
+ 响应包含多个桶，每个对应一个唯一颜色（例如：红 或 绿）。每个桶也包括 聚合进 该桶的所有文档的数量。例如，有四辆红色的车。
+ 
+ 前面的这个例子完全是实时执行的：一旦文档可以被搜到，它就能被聚合。这也就意味着我们可以直接将聚合的结果源源不断的传入图形库，然后生成实时的仪表盘。 不久，你又销售了一辆银色的车，我们的图形就会立即动态更新银色车的统计信息。
+ 
+ 瞧！这就是我们的第一个聚合！
