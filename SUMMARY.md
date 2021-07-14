@@ -81,4 +81,9 @@
     * [尝试聚合](aggregation/try_agg/README.md)    
        * [添加度量指标](aggregation/try_agg/01_add_metric.md)   
        * [嵌套桶](aggregation/try_agg/02_nest_bucket.md) 
-       * [最后的修改](aggregation/try_agg/03_last_modify.md) 
+       * [最后的修改](aggregation/try_agg/03_last_modify.md)   
+    * [按时间统计](aggregation/time_static/README.md)   
+       * [返回空 Buckets](aggregation/try_agg/01_empty_buckets.md)   
+       * [扩展例子](aggregation/try_agg/02_external_example.md)   
+       * [潜力无穷](aggregation/try_agg/03_dive_in.md)    
+       
