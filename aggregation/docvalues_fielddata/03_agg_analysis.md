@@ -1,0 +1,184 @@
+# 聚合与分析  
+有些聚合，比如 terms 桶， 操作字符串字段。字符串字段可能是 analyzed 或者 not_analyzed ， 那么问题来了，分析是怎么影响聚合的呢？
+
+答案是影响“很多”，有两个原因：分析影响聚合中使用的 tokens ，并且 doc values 不能使用于 分析字符串。
+
+让我们解决第一个问题：分析 tokens 的产生如何影响聚合。首先索引一些代表美国各个州的文档：   
+```
+POST /agg_analysis/data/_bulk
+{ "index": {}}
+{ "state" : "New York" }
+{ "index": {}}
+{ "state" : "New Jersey" }
+{ "index": {}}
+{ "state" : "New Mexico" }
+{ "index": {}}
+{ "state" : "New York" }
+{ "index": {}}
+{ "state" : "New York" }
+```   
+我们希望创建一个数据集里各个州的唯一列表，并且计数。 简单，让我们使用 terms 桶：   
+```
+GET /agg_analysis/data/_search
+{
+    "size" : 0,
+    "aggs" : {
+        "states" : {
+            "terms" : {
+                "field" : "state"
+            }
+        }
+    }
+}
+```    
+得到结果：    
+```
+{
+...
+   "aggregations": {
+      "states": {
+         "buckets": [
+            {
+               "key": "new",
+               "doc_count": 5
+            },
+            {
+               "key": "york",
+               "doc_count": 3
+            },
+            {
+               "key": "jersey",
+               "doc_count": 1
+            },
+            {
+               "key": "mexico",
+               "doc_count": 1
+            }
+         ]
+      }
+   }
+}
+```    
+宝贝儿，这完全不是我们想要的！没有对州名计数，聚合计算了每个词的数目。背后的原因很简单：聚合是基于倒排索引创建的，
+倒排索引是 后置分析（ post-analysis ）的。
+
+当我们把这些文档加入到 Elasticsearch 中时，字符串 "New York" 被分析/分析成 ["new", "york"] 。
+这些单独的 tokens ，都被用来填充聚合计数，所以我们最终看到 new 的数量而不是 New York 。
+
+这显然不是我们想要的行为，但幸运的是很容易修正它。
+
+我们需要为 state 定义 multifield 并且设置成 not_analyzed 。这样可以防止 New York 被分析，
+也意味着在聚合过程中它会以单个 token 的形式存在。让我们尝试完整的过程，但这次指定一个 raw multifield：   
+```
+DELETE /agg_analysis/
+PUT /agg_analysis
+{
+  "mappings": {
+    "data": {
+      "properties": {
+        "state" : {
+          "type": "string",
+          "fields": {
+            "raw" : {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+POST /agg_analysis/data/_bulk
+{ "index": {}}
+{ "state" : "New York" }
+{ "index": {}}
+{ "state" : "New Jersey" }
+{ "index": {}}
+{ "state" : "New Mexico" }
+{ "index": {}}
+{ "state" : "New York" }
+{ "index": {}}
+{ "state" : "New York" }
+
+GET /agg_analysis/data/_search
+{
+  "size" : 0,
+  "aggs" : {
+    "states" : {
+        "terms" : {
+            "field" : "state.raw" 
+        }
+    }
+  }
+}
+```  
+这次我们显式映射 state 字段并包括一个 not_analyzed 辅字段。    
+聚合针对 state.raw 字段而不是 state 。   
+
+现在运行聚合，我们得到了合理的结果：  
+```
+{
+...
+   "aggregations": {
+      "states": {
+         "buckets": [
+            {
+               "key": "New York",
+               "doc_count": 3
+            },
+            {
+               "key": "New Jersey",
+               "doc_count": 1
+            },
+            {
+               "key": "New Mexico",
+               "doc_count": 1
+            }
+         ]
+      }
+   }
+}
+```  
+在实际中，这样的问题很容易被察觉，我们的聚合会返回一些奇怪的桶，我们会记住分析的问题。 
+总之，很少有在聚合中使用分析字段的实例。当我们疑惑时，只要增加一个 multifield 就能有两种选择。   
+## 分析字符串和 Fielddata（Analyzed strings and Fielddata）
+当第一个问题涉及如何聚合数据并显示给用户，第二个问题主要是技术和幕后。
+
+Doc values 不支持 analyzed 字符串字段，因为它们不能很有效的表示多值字符串。 Doc values 最有效的是，
+当每个文档都有一个或几个 tokens 时， 但不是无数的，分析字符串（想象一个 PDF ，可能有几兆字节并有数以千计的独特 tokens）。
+
+出于这个原因，doc values 不生成分析的字符串，然而，这些字段仍然可以使用聚合，那怎么可能呢？
+
+答案是一种被称为 fielddata 的数据结构。与 doc values 不同，fielddata 构建和管理 100% 在内存中，
+常驻于 JVM 内存堆。这意味着它本质上是不可扩展的，有很多边缘情况下要提防。 
+本章的其余部分是解决在分析字符串上下文中 fielddata 的挑战。   
+
+>note
+>> 从历史上看，fielddata 是 所有 字段的默认设置。但是 Elasticsearch 已迁移到 doc values 以减少 OOM 的几率。
+>>分析的字符串是仍然使用 fielddata 的最后一块阵地。 最终目标是建立一个序列化的数据结构类似于 doc values ，
+>>可以处理高维度的分析字符串，逐步淘汰 fielddata。    
+
+## 高基数内存的影响（High-Cardinality Memory Implications）
+避免分析字段的另外一个原因就是：高基数字段在加载到 fielddata 时会消耗大量内存。 
+分析的过程会经常（尽管不总是这样）生成大量的 token，这些 token 大多都是唯一的。 
+这会增加字段的整体基数并且带来更大的内存压力。    
+
+有些类型的分析对于内存来说 极度 不友好，想想 n-gram 的分析过程， New York 会被 n-gram 分析成以下 token：    
+ - ne  
+ - ew   
+ - w    
+ - y  
+ - yo  
+ - or  
+ - rk  
+ 
+可以想象 n-gram 的过程是如何生成大量唯一 token 的，特别是在分析成段文本的时候。
+当这些数据加载到内存中，会轻而易举的将我们堆空间消耗殆尽。   
+
+因此，在聚合字符串字段之前，请评估情况：   
+
+这是一个 not_analyzed 字段吗？如果是，可以通过 doc values 节省内存 。     
+否则，这是一个 analyzed 字段，它将使用 fielddata 并加载到内存中。
+这个字段因为 ngrams 有一个非常大的基数？如果是，这对于内存来说极度不友好。    
