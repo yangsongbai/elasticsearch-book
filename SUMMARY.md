@@ -110,3 +110,5 @@
        * [预加载 fielddata](aggregation/docvalues_fielddata/06_pre_fielddata.md)   
        * [优化聚合查询](aggregation/docvalues_fielddata/07_optimize_agg.md)   
     * [总结](aggregation/README.md)       
+* [深入搜索](deep_search/README.md)   
+    * [控制相关度](deep_search/controlling_relevance/README.md)      
