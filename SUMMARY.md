@@ -114,3 +114,5 @@
     * [控制相关度](deep_search/controlling_relevance/README.md)    
        * [相关度评分背后的理论](deep_search/controlling_relevance/01_scoring_theory.md)   
        * [Lucene 的实用评分函数](deep_search/controlling_relevance/02_practical-scoring-function.md)      
+       * [查询时权重提升](deep_search/controlling_relevance/03_query-time-boosting.md)   
+       * [使用查询结构修改相关度](deep_search/controlling_relevance/04_query-scoring.md)  
