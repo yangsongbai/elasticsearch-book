@@ -1,1 +1,54 @@
 # 使用查询结构修改相关度  
+Elasticsearch 的查询表达式相当灵活，可以通过调整查询结构中查询语句的所处层次，从而或多或少改变其重要性，比如，设想下面这个查询：
+
+quick OR brown OR red OR fox
+可以将所有词都放在 bool 查询的同一层中：     
+```
+GET /_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        { "term": { "text": "quick" }},
+        { "term": { "text": "brown" }},
+        { "term": { "text": "red"   }},
+        { "term": { "text": "fox"   }}
+      ]
+    }
+  }
+}
+```     
+这个查询可能最终给包含 quick 、 red 和 brown 的文档评分与包含 quick 、 red 、 fox 文档的评分相同，
+这里 Red 和 brown 是同义词，可能只需要保留其中一个，而我们真正要表达的意思是想做以下查询：    
+quick OR (brown OR red) OR fox
+根据标准的布尔逻辑，这与原始的查询是完全一样的，但是我们已经在 组合查询（Combining Queries） 中看到， 
+bool 查询不关心文档匹配的 程度 ，只关心是否能匹配。   
+
+上述查询有个更好的方式：  
+```
+GET /_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        { "term": { "text": "quick" }},
+        { "term": { "text": "fox"   }},
+        {
+          "bool": {
+            "should": [
+              { "term": { "text": "brown" }},
+              { "term": { "text": "red"   }}
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+```     
+现在， red 和 brown 处于相互竞争的层次， quick 、 fox 以及 red OR brown 则是处于顶层且相互竞争的词。
+
+我们已经讨论过如何使用 match 、multi_match 、term 、bool 和 dis_max 查询修改相关度评分。
+本章后面的内容会介绍另外三个与相关度评分有关的查询： boosting 查询、 constant_score 查询和 function_score 查询。    
+
+

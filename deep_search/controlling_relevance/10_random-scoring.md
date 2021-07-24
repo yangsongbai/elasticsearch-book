@@ -1,0 +1,48 @@
+#  随机评分    
+你可能会想知道 一致随机评分（consistently random scoring） 是什么，又为什么会使用它。之前的例子是个很好的应用场景，
+前例中所有的结果都会返回 1 、 2 、 3 、 4 或 5 这样的最终评分 _score ，可能只有少数房子的评分是 5 分，而有大量房子的评分是 2 或 3 。   
+
+作为网站的所有者，总会希望让广告有更高的展现率。在当前查询下，有相同评分 _score 的文档会每次都以相同次序出现，
+为了提高展现率，在此引入一些随机性可能会是个好主意，这能保证有相同评分的文档都能有均等相似的展现机率。   
+ 
+我们想让每个用户看到不同的随机次序，但也同时希望如果是同一用户翻页浏览时，结果的相对次序能始终保持一致。    
+这种行为被称为 一致随机（consistently random） 。  
+
+random_score 函数会输出一个 0 到 1 之间的数，当种子 seed 值相同时，生成的随机结果是一致的，例如，将用户的会话 ID 作为 seed ：     
+```
+GET /_search
+{
+  "query": {
+    "function_score": {
+      "filter": {
+        "term": { "city": "Barcelona" }
+      },
+      "functions": [
+        {
+          "filter": { "term": { "features": "wifi" }},
+          "weight": 1
+        },
+        {
+          "filter": { "term": { "features": "garden" }},
+          "weight": 1
+        },
+        {
+          "filter": { "term": { "features": "pool" }},
+          "weight": 2
+        },
+        {
+          "random_score": {       (1)
+            "seed":  "the users session id"       (2)
+          }
+        }
+      ],
+      "score_mode": "sum"
+    }
+  }
+}
+```   
+(1) random_score 语句没有任何过滤器 filter ，所以会被应用到所有文档。     
+(2) 将用户的会话 ID 作为种子 seed ，让该用户的随机始终保持一致，相同的种子 seed 会产生相同的随机结果。     
+
+当然，如果增加了与查询匹配的新文档，无论是否使用一致随机，其结果顺序都会发生变化。     
+
