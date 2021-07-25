@@ -123,3 +123,9 @@
        * [过滤集提升权重](deep_search/controlling_relevance/09_function-score-filters.md)    
        * [随机评分](deep_search/controlling_relevance/10_random-scoring.md)    
        * [越近越好](deep_search/controlling_relevance/11_decay-functions.md)    
+       * [理解 price 价格语句](deep_search/controlling_relevance/12_understanding-the-price-clause.md)   
+       * [脚本评分](deep_search/controlling_relevance/13_script-score.md)    
+       * [可插拔的相似度算法](deep_search/controlling_relevance/14_pluggable-similarites.md) 
+       * [更改相似度](deep_search/controlling_relevance/15_changing-similarities.md)     
+       * [调试相关度是最后 10% 要做的事情](deep_search/controlling_relevance/16_relevance-conclusion.md) 
+       

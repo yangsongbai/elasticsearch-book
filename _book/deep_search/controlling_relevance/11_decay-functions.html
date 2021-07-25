@@ -98,6 +98,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="12_understanding-the-price-clause.html" />
+    
     
     <link rel="prev" href="10_random-scoring.html" />
     
@@ -1883,6 +1885,71 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6.1.12" data-path="12_understanding-the-price-clause.html">
+            
+                <a href="12_understanding-the-price-clause.html">
+            
+                    
+                    理解 price 价格语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.13" data-path="13_script-score.html">
+            
+                <a href="13_script-score.html">
+            
+                    
+                    脚本评分
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.14" data-path="14_pluggable-similarites.html">
+            
+                <a href="14_pluggable-similarites.html">
+            
+                    
+                    可插拔的相似度算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.15" data-path="15_changing-similarities.html">
+            
+                <a href="15_changing-similarities.html">
+            
+                    
+                    更改相似度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.16" data-path="16_relevance-conclusion.html">
+            
+                <a href="16_relevance-conclusion.html">
+            
+                    
+                    调试相关度是最后 10% 要做的事情
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1958,7 +2025,7 @@
 &#x5728;&#x8303;&#x56F4; -offset &lt;= origin &lt;= +offset &#x5185;&#x7684;&#x6240;&#x6709;&#x8BC4;&#x5206; _score &#x90FD;&#x662F; 1.0 &#x3002;</li>
 </ul>
 <p>&#x8FD9;&#x4E09;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x552F;&#x4E00;&#x533A;&#x522B;&#x5C31;&#x662F;&#x5B83;&#x4EEC;&#x8870;&#x51CF;&#x66F2;&#x7EBF;&#x7684;&#x5F62;&#x72B6;&#xFF0C;&#x7528;&#x56FE;&#x6765;&#x8BF4;&#x660E;&#x4F1A;&#x66F4;&#x4E3A;&#x76F4;&#x89C2;&#xFF08;&#x53C2;&#x89C1; Figure 33, &#x201C;&#x8870;&#x51CF;&#x51FD;&#x6570;&#x66F2;&#x7EBF;&#x201D; &#xFF09;&#x3002;     </p>
-<p><a href="images/figure_33.png" data-lightbox="05960420-49d7-4660-98d0-7adcabca9339" data-title="&#x8870;&#x51CF;&#x51FD;&#x6570;&#x66F2;&#x7EBF;"><img src="images/figure_33.png" alt="&#x8870;&#x51CF;&#x51FD;&#x6570;&#x66F2;&#x7EBF;"></a>    </p>
+<p><a href="images/figure_33.png" data-lightbox="b2d69f97-23ba-4267-9f6b-4fff435f15f4" data-title="&#x8870;&#x51CF;&#x51FD;&#x6570;&#x66F2;&#x7EBF;"><img src="images/figure_33.png" alt="&#x8870;&#x51CF;&#x51FD;&#x6570;&#x66F2;&#x7EBF;"></a>    </p>
 <p>&#x56FE; Figure 33, &#x201C;&#x8870;&#x51CF;&#x51FD;&#x6570;&#x66F2;&#x7EBF;&#x201D; &#x4E2D;&#x6240;&#x6709;&#x66F2;&#x7EBF;&#x7684;&#x539F;&#x70B9; origin &#xFF08;&#x5373;&#x4E2D;&#x5FC3;&#x70B9;&#xFF09;&#x7684;&#x503C;&#x90FD;&#x662F; 40 &#xFF0C; offset &#x662F; 5 &#xFF0C;
 &#x4E5F;&#x5C31;&#x662F;&#x5728;&#x8303;&#x56F4; 40 - 5 &lt;= value &lt;= 40 + 5 &#x5185;&#x7684;&#x6240;&#x6709;&#x503C;&#x90FD;&#x4F1A;&#x88AB;&#x5F53;&#x4F5C;&#x539F;&#x70B9; origin &#x5904;&#x7406;&#x2014;&#x2014;&#x6240;&#x6709;&#x8FD9;&#x4E9B;&#x70B9;&#x7684;&#x8BC4;&#x5206;&#x90FD;&#x662F;&#x6EE1;&#x5206; 1.0 &#x3002;</p>
 <p>&#x5728;&#x6B64;&#x8303;&#x56F4;&#x4E4B;&#x5916;&#xFF0C;&#x8BC4;&#x5206;&#x5F00;&#x59CB;&#x8870;&#x51CF;&#xFF0C;&#x8870;&#x51CF;&#x7387;&#x7531; scale &#x503C;&#xFF08;&#x6B64;&#x4F8B;&#x4E2D;&#x7684;&#x503C;&#x4E3A; 5 &#xFF09;&#x548C; &#x8870;&#x51CF;&#x503C; decay &#xFF08;&#x6B64;&#x4F8B;&#x4E2D;&#x4E3A;&#x9ED8;&#x8BA4;&#x503C; 0.5 &#xFF09;&#x5171;&#x540C;&#x51B3;&#x5B9A;&#x3002;
@@ -2053,10 +2120,14 @@
 
             
                 
-                <a href="10_random-scoring.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 随机评分">
+                <a href="10_random-scoring.html" class="navigation navigation-prev " aria-label="Previous page: 随机评分">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="12_understanding-the-price-clause.html" class="navigation navigation-next " aria-label="Next page: 理解 price 价格语句">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -2065,7 +2136,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"越近越好","level":"1.6.1.11","depth":3,"previous":{"title":"随机评分","level":"1.6.1.10","depth":3,"path":"deep_search/controlling_relevance/10_random-scoring.md","ref":"deep_search/controlling_relevance/10_random-scoring.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","expandable-chapters","hide-element","github","github-buttons","sharing-plus","anchor-navigation-ex","code","lightbox","tbfed-pagefooter","copy-code-button","search-plus","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Songbai Yang","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD"},"github":{"url":"https://github.com/yangsongbai"},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"github-buttons":{"buttons":[{"user":"yangsongbai","repo":"elasticsearch-book","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"Shay Banon","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"elastscsearch权威指南","language":"zh-hans","links":{"sidebar":{"CSDN博客":"https://blog.csdn.net/yang52017","个人微信公众号":"https://mp.weixin.qq.com/s/6J7d4EVw6uX3Im9sbXW6WQ"}},"gitbook":"3.2.3","sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"anchor-navigation-ex":{"showLevel":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"description":"简单描素"},"file":{"path":"deep_search/controlling_relevance/11_decay-functions.md","mtime":"2021-07-24T05:34:42.413Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-24T05:37:56.340Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"越近越好","level":"1.6.1.11","depth":3,"next":{"title":"理解 price 价格语句","level":"1.6.1.12","depth":3,"path":"deep_search/controlling_relevance/12_understanding-the-price-clause.md","ref":"deep_search/controlling_relevance/12_understanding-the-price-clause.md","articles":[]},"previous":{"title":"随机评分","level":"1.6.1.10","depth":3,"path":"deep_search/controlling_relevance/10_random-scoring.md","ref":"deep_search/controlling_relevance/10_random-scoring.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","expandable-chapters","hide-element","github","github-buttons","sharing-plus","anchor-navigation-ex","code","lightbox","tbfed-pagefooter","copy-code-button","search-plus","back-to-top-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Songbai Yang","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD"},"github":{"url":"https://github.com/yangsongbai"},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"github-buttons":{"buttons":[{"user":"yangsongbai","repo":"elasticsearch-book","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"Shay Banon","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"elastscsearch权威指南","language":"zh-hans","links":{"sidebar":{"CSDN博客":"https://blog.csdn.net/yang52017","个人微信公众号":"https://mp.weixin.qq.com/s/6J7d4EVw6uX3Im9sbXW6WQ"}},"gitbook":"3.2.3","sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"anchor-navigation-ex":{"showLevel":false,"isShowTocTitleIcon":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"description":"简单描素"},"file":{"path":"deep_search/controlling_relevance/11_decay-functions.md","mtime":"2021-07-24T05:34:42.413Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-25T11:21:17.876Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

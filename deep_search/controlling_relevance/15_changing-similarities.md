@@ -1,0 +1,58 @@
+#  更改相似度   
+相似度算法可以按字段指定，只需在映射中为不同字段选定即可：  
+```
+PUT /my_index
+{
+  "mappings": {
+    "doc": {
+      "properties": {
+        "title": {
+          "type":       "string",
+          "similarity": "BM25" 
+        },
+        "body": {
+          "type":       "string",
+          "similarity": "default" 
+        }
+      }
+  }
+```   
+(1)  title 字段使用 BM25 相似度算法。    
+(2)   body 字段用默认相似度算法（参见 实用评分函数）。    
+目前，Elasticsearch 不支持更改已有字段的相似度算法 similarity 映射，只能通过为数据重新建立索引来达到目的。  
+#  配置BM25   
+配置相似度算法和配置分析器很相似，自定义相似度算法可以在创建索引时指定，例如：    
+```
+PUT /my_index
+{
+  "settings": {
+    "similarity": {
+      "my_bm25": {       (1)
+        "type": "BM25",
+        "b":    0        (2)
+      }
+    }
+  },
+  "mappings": {
+    "doc": {
+      "properties": {
+        "title": {
+          "type":       "string",
+          "similarity": "my_bm25"    (3)
+        },
+        "body": {
+          "type":       "string",
+          "similarity": "BM25"       (4) 
+        }
+      }
+    }
+  }
+}
+```    
+(1) 创建一个基于内置 BM25 ，名为 my_bm25 的自定义相似度算法。    
+(2) 禁用字段长度规范化（field-length normalization）。参见 [调试 BM25](https://www.elastic.co/guide/cn/elasticsearch/guide/current/pluggable-similarites.html#bm25-tunability) 。   
+(3) title 字段使用自定义相似度算法 my_bm25 。    
+(4) 字段 body 使用内置相似度算法 BM25 。    
+
+> Tip 
+>> 定义的相似度算法可以通过关闭索引，更新索引设置，开启索引这个过程进行更新。这样可以无须重建索引又能试验不同的相似度算法配置。   
