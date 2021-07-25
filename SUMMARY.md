@@ -111,6 +111,8 @@
        * [优化聚合查询](aggregation/docvalues_fielddata/07_optimize_agg.md)   
     * [总结](aggregation/README.md)       
 * [深入搜索](deep_search/README.md)   
+    * [结构化搜索](deep_search/structured-search/README.md)    
+       * [精确值查找](deep_search/structured-search/01_finding_exact_value.md)   
     * [控制相关度](deep_search/controlling_relevance/README.md)    
        * [相关度评分背后的理论](deep_search/controlling_relevance/01_scoring_theory.md)   
        * [Lucene 的实用评分函数](deep_search/controlling_relevance/02_practical-scoring-function.md)      
