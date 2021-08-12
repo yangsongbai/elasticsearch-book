@@ -10,4 +10,5 @@
 ```
 由根目录buildd.gradle文件内容可知 安装包在 ./distribution/package目录下   
 https://blog.csdn.net/u013066244/article/details/73927756      
-https://www.iteye.com/blog/fishboy-2391750   
+https://www.iteye.com/blog/fishboy-2391750     
+https://segmentfault.com/a/1190000017831398    
